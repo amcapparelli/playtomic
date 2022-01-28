@@ -2,9 +2,11 @@
 
 This is a code test for playtomic by Alejandro Capparelli.
 
-Before running this app locally you should install the backend:
+## Important
 
-[PLaytomic Backend](https://github.com/amcapparelli/playtomic_backend)
+Before running this app locally please install install the backend:
+
+[Playtomic Backend](https://github.com/amcapparelli/playtomic_backend)
 
 ### node version
 
