@@ -9,7 +9,7 @@ import { useFetch, useForm } from '../hooks';
 import { useDispatch } from 'react-redux'
 import { login as loginURL } from '../config/routes';
 import { requestMethods } from '../constants/requestMethods';
-import { userLoad } from '../app/actions/userActions';
+import { userLoad } from '../modules/userModule/actions/userActions';
 
 const Login: React.FC = (): JSX.Element => {
   const [loginResponse, loginRequest, loading] = useFetch();
@@ -23,7 +23,7 @@ const Login: React.FC = (): JSX.Element => {
       dispatch(userLoad({ ...user, isLogged: true }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loginResponse, loginResponse.success]);
+  }, [loginResponse.success]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { target: { name, value } } = e;

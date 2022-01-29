@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { default as DashboardLayout } from '../layouts/dashboard';
 import { AppState, User } from '../types';
 
-const UserProfile: React.FC = (): JSX.Element => {
+const UserDashboard: React.FC = (): JSX.Element => {
   const user: User = useSelector((state: AppState) => state.user);
   return (
     <DashboardLayout>
@@ -12,4 +12,4 @@ const UserProfile: React.FC = (): JSX.Element => {
   );
 }
 
-export default UserProfile;
+export default UserDashboard;
