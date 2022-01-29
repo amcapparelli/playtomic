@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux'
 import styledComponents from 'styled-components';
 import {
   AppBar,
@@ -13,10 +12,8 @@ import {
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
-import { User } from '../types';
 
-const Dasboard: React.FC = (): JSX.Element => {
-  const user: User = useSelector((state: any) => state.user);
+const Dashboard: React.FC = ({ children }): JSX.Element => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -29,7 +26,7 @@ const Dasboard: React.FC = (): JSX.Element => {
           </Toolbar>
         </AppBar>
       </Box>
-      <StyledMenuContainer>
+      <StyledMainContainer>
         <MenuList>
           <MenuItem>
             <IconButton>
@@ -44,14 +41,16 @@ const Dasboard: React.FC = (): JSX.Element => {
             </IconButton>
           </MenuItem>
         </MenuList>
-      </StyledMenuContainer>
-      <p>hola {user.name}</p>
+        {children}
+      </StyledMainContainer>
     </>
   );
 }
 
-const StyledMenuContainer = styledComponents.div`
+const StyledMainContainer = styledComponents.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr;
   margin-top: 5%;
 `;
 
-export default Dasboard;
+export default Dashboard;

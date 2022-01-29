@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import Login from './views/login';
-import Dashboard from './views/dashboard';
+import UserProfile from './views/userProfile';
 import { AppState } from './types';
 
 function App(): JSX.Element {
@@ -9,7 +9,7 @@ function App(): JSX.Element {
   return (
     <>
       {
-        userIsLogged ? <Dashboard /> : <Login />
+        userIsLogged ? <UserProfile /> : <Login />
       }
     </>
   );
