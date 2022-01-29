@@ -6,17 +6,22 @@ import {
 } from '@material-ui/core';
 import styledComponents from 'styled-components';
 import { useFetch, useForm } from '../hooks';
+import { useDispatch } from 'react-redux'
 import { login as loginURL } from '../config/routes';
 import { requestMethods } from '../constants/requestMethods';
 
 const Login: React.FC = (): JSX.Element => {
   const [loginResponse, loginRequest, loading] = useFetch();
   const [loginForm, setLoginForm] = useForm({});
+  const dispatch = useDispatch();
   React.useEffect(() => {
     if (loginResponse.success) {
-      console.log('success')
+      const { user: { token, ...user } } = loginResponse;
+      localStorage.setItem("token", token);
+      dispatch({ type: 'load-user', payload: user })
     }
-  }, [loginResponse.success]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginResponse, loginResponse.success]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { target: { name, value } } = e;
