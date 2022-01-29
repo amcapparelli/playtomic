@@ -9,16 +9,18 @@ import { useFetch, useForm } from '../hooks';
 import { useDispatch } from 'react-redux'
 import { login as loginURL } from '../config/routes';
 import { requestMethods } from '../constants/requestMethods';
+import { userLoad } from '../app/actions/userActions';
 
 const Login: React.FC = (): JSX.Element => {
   const [loginResponse, loginRequest, loading] = useFetch();
   const [loginForm, setLoginForm] = useForm({});
   const dispatch = useDispatch();
+
   React.useEffect(() => {
     if (loginResponse.success) {
       const { user: { token, ...user } } = loginResponse;
       localStorage.setItem("token", token);
-      dispatch({ type: 'load-user', payload: user })
+      dispatch(userLoad({ ...user, isLogged: true }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginResponse, loginResponse.success]);
@@ -29,7 +31,7 @@ const Login: React.FC = (): JSX.Element => {
   }
 
   async function login(): Promise<void> {
-    loginRequest(loginURL, requestMethods.POST, loginForm);
+    loginRequest(loginURL, loginForm, requestMethods.POST);
   };
 
   return (
@@ -37,7 +39,7 @@ const Login: React.FC = (): JSX.Element => {
       <Typography variant="h2" component="h2">
         Sign in
       </Typography>
-      {['email', 'password'].map((text) => (
+      {['email', 'password'].map((text: string) => (
         <TextField
           key={text}
           label={text}

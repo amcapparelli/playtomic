@@ -1,11 +1,16 @@
 import React from 'react';
+import { requestMethods } from '../constants/requestMethods';
 
 const useFetch = (): [any, Function, boolean] => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [responseJSON, setResponse] = React.useState<Response | unknown>({
     success: undefined
   });
-  const asyncRequest = async (url: string, method: string, body: object): Promise<void> => {
+  const asyncRequest = async (
+    url: string,
+    body: Object,
+    method: string = requestMethods.GET,
+  ): Promise<void> => {
     try {
       setLoading(true);
       const res = await fetch(url, {
