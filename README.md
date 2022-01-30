@@ -25,8 +25,8 @@ npm start
 
 For login use these credentials:
 
-email: admin@admin.com
-password: 123456
+* email: admin@admin.com
+* password: 123456
 
 ### Unit tests
 
