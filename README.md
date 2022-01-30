@@ -21,6 +21,19 @@ npm install
 npm start
 ```
 
+### Credentials for functional testing
+
+For login use these credentials:
+
+email: admin@admin.com
+password: 123456
+
+### Unit tests
+
+```
+npm run test
+```
+
 
 
 
