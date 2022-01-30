@@ -1,24 +1,25 @@
-// import * as userActions from "./actions/action-types";
+import * as dashboardActions from "./actions/action-types";
+import { menuNavigation } from '../../constants/menuNavigation';
 
 export const initialState = {
-  matches: {
-    played: 0,
-    won: 0,
-    lost: 0
-  },
-  ranking: 0,
+  menuActive: 'dashboard'
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    // case userActions.USER_LOAD: {
-    //   const user = action.payload;
-    //   return {
-    //     ...state,
-    //     ...user
-    //   };
-    // }
+    case dashboardActions.NAVIGATE_SETTINGS: {
+      return {
+        ...state,
+        menuActive: menuNavigation.SETTINGS
+      };
+    }
+    case dashboardActions.NAVIGATE_DASHBOARD: {
+      return {
+        ...state,
+        menuActive: menuNavigation.DASHBOARD
+      };
+    }
     default:
       return state;
   }

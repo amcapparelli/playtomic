@@ -1,23 +1,26 @@
 import * as React from 'react';
+import { Typography } from '@mui/material';
+import { useFetchAndState } from '../hooks';
+import { userStatistics as userStatisticsRoute } from '../config/routes';
 
-type Statistics = {
-  ranking: number,
-  win: number,
-  lose: number
-}
+const UserStatistics: React.FC = (): JSX.Element | null => {
+  const [{ data }, userDashboardDataRequest] = useFetchAndState();
 
-type Props = {
-  statistics: Statistics
-}
+  React.useEffect(() => {
+    userDashboardDataRequest(userStatisticsRoute);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-const UserStatistics: React.FC<Props> = ({ statistics }: Props): JSX.Element => {
-  const { ranking, win, lose } = statistics;
   return (
-    <>
-      <p>Wins: {win}</p>
-      <p>Lose: {lose}</p>
-      <p>Ranking: {ranking}</p>
-    </>
+    data
+      ?
+      <div>
+        <Typography variant="h2"> These are your tennis statistics</Typography>
+        <Typography variant="body1"> Win: {data.win}</Typography>
+        <Typography variant="body1"> Lose: {data.lose}</Typography>
+        <Typography variant="body1"> Ranking: {data.ranking}</Typography>
+      </div>
+      : null
   );
 }
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 import styledComponents from 'styled-components';
 import {
   AppBar,
@@ -12,6 +13,8 @@ import {
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
+import { navigateDashboard, navigateSettings } from '../modules/dashboardModule/actions/dashboardActions';
+import { logout } from '../modules/userModule/actions/userActions';
 
 type Props = {
   children: React.ReactNode,
@@ -19,6 +22,13 @@ type Props = {
 }
 
 const Dashboard: React.FC<Props> = ({ children, userName }: Props): JSX.Element => {
+  const dispatch = useDispatch();
+
+  function handleLogoutClick() {
+    dispatch(logout())
+    localStorage.removeItem('token');
+  }
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -27,20 +37,20 @@ const Dashboard: React.FC<Props> = ({ children, userName }: Props): JSX.Element 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               {`Hello ${userName}`}
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button color="inherit" onClick={handleLogoutClick}>Logout</Button>
           </Toolbar>
         </AppBar>
       </Box>
       <StyledMainContainer>
         <MenuList>
           <MenuItem>
-            <IconButton>
+            <IconButton onClick={() => dispatch(navigateDashboard())} >
               <DashboardCustomizeIcon />
               Dashboard
             </IconButton>
           </MenuItem>
           <MenuItem>
-            <IconButton>
+            <IconButton onClick={() => dispatch(navigateSettings())}>
               <SettingsIcon />
               Settings
             </IconButton>

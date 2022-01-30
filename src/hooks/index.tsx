@@ -1,2 +1,3 @@
-export { default as useFetch } from './useFetch';
+export { default as useFetchAndState } from './useFetchAndState';
+export { default as useFetchAndDispatch } from './useFetchAndDispatch';
 export { default as useForm } from './useForm';

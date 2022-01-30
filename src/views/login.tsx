@@ -6,14 +6,14 @@ import {
   Typography
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { useFetch, useForm } from '../hooks';
+import { useFetchAndState, useForm } from '../hooks';
 import { useDispatch } from 'react-redux'
 import { login as loginURL } from '../config/routes';
 import { requestMethods } from '../constants/requestMethods';
 import { userLoad } from '../modules/userModule/actions/userActions';
 
 const Login: React.FC = (): JSX.Element => {
-  const [loginResponse, loginRequest, loading] = useFetch();
+  const [loginResponse, loginRequest, loading] = useFetchAndState();
   const [loginForm, setLoginForm] = useForm({});
   const dispatch = useDispatch();
 

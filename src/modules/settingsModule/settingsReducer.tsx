@@ -1,4 +1,4 @@
-// import * as userActions from "./actions/action-types";
+import * as settingsActions from "./actions/action-types";
 
 export const initialState = {
   language: 'en',
@@ -8,13 +8,13 @@ export const initialState = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    // case userActions.USER_LOAD: {
-    //   const user = action.payload;
-    //   return {
-    //     ...state,
-    //     ...user
-    //   };
-    // }
+    case settingsActions.SETTINGS_LOAD: {
+      const settings = action.payload.data;
+      return {
+        ...state,
+        ...settings
+      };
+    }
     default:
       return state;
   }

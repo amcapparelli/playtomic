@@ -1,7 +1,7 @@
 import React from 'react';
 import { requestMethods } from '../constants/requestMethods';
 
-const useFetch = (): [any, Function, boolean] => {
+const useFetchAndState = (): [any, Function, boolean] => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [responseJSON, setResponse] = React.useState<Response | unknown>({
     success: undefined
@@ -18,7 +18,6 @@ const useFetch = (): [any, Function, boolean] => {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        // 'access-token': user.token,
       },
     }
     const options: RequestInit = method === requestMethods.GET
@@ -39,4 +38,4 @@ const useFetch = (): [any, Function, boolean] => {
   return [responseJSON, asyncRequest, loading];
 };
 
-export default useFetch;
+export default useFetchAndState;
