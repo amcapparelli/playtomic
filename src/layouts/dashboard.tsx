@@ -13,14 +13,19 @@ import {
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 
-const Dashboard: React.FC = ({ children }): JSX.Element => {
+type Props = {
+  children: React.ReactNode,
+  userName: string
+}
+
+const Dashboard: React.FC<Props> = ({ children, userName }: Props): JSX.Element => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Dashboard
+              {`Hello ${userName}`}
             </Typography>
             <Button color="inherit">Logout</Button>
           </Toolbar>

@@ -1,10 +1,11 @@
 import React from 'react';
+import styledComponents from 'styled-components';
 import {
   Button,
   TextField,
   Typography
 } from '@material-ui/core';
-import styledComponents from 'styled-components';
+import Alert from '@material-ui/lab/Alert';
 import { useFetch, useForm } from '../hooks';
 import { useDispatch } from 'react-redux'
 import { login as loginURL } from '../config/routes';
@@ -58,6 +59,14 @@ const Login: React.FC = (): JSX.Element => {
       >
         {loading ? 'loading' : 'Login'}
       </StyledButton>
+      {
+        loginResponse.message
+        && (
+          <Alert variant="filled" severity={loginResponse.success ? 'success' : 'error'}>
+            {loginResponse.message}
+          </Alert>
+        )
+      }
     </StyledForm>
   );
 }

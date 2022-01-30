@@ -8,22 +8,26 @@ const useFetch = (): [any, Function, boolean] => {
   });
   const asyncRequest = async (
     url: string,
-    body: Object,
+    body: Object = {},
     method: string = requestMethods.GET,
   ): Promise<void> => {
+    const defaultOptions: RequestInit = {
+      method,
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'access-token': user.token,
+      },
+    }
+    const options: RequestInit = method === requestMethods.GET
+      ? defaultOptions
+      : { ...defaultOptions, body: JSON.stringify({ ...body }) }
+
     try {
       setLoading(true);
-      const res = await fetch(url, {
-        method,
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include',
-        body: JSON.stringify({ ...body }),
-        headers: {
-          'Content-Type': 'application/json',
-          // 'access-token': user.token,
-        },
-      });
+      const res = await fetch(url, options);
       const resJSON = await res.json();
       setResponse(resJSON);
     } catch (error) {
