@@ -11,7 +11,7 @@ import Alert from '@material-ui/lab/Alert';
 import { useFetchAndState, useForm } from '../hooks';
 import { login as loginURL } from '../config/routes';
 import { requestMethods } from '../constants/requestMethods';
-import { userLoad } from '../modules/userModule/actions/userActions';
+import { userLoad } from '../redux/userModule/actions/userActions';
 
 const Login: React.FC = (): JSX.Element => {
   const dispatch = useDispatch();

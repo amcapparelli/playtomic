@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
-import { navigateDashboard, navigateSettings } from '../modules/dashboardModule/actions/dashboardActions';
-import { logout } from '../modules/userModule/actions/userActions';
+import { navigateDashboard, navigateSettings } from '../redux/dashboardModule/actions/dashboardActions';
+import { logout } from '../redux/userModule/actions/userActions';
 import { MenuItem as MenuItemType } from '../constants/menuNavigation';
 import { AppState } from '../types';
 

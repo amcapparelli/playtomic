@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux'
 import { Checkbox, Typography } from '@mui/material';
 import { useFetchAndDispatch } from '../hooks';
-import { settingsLoad } from '../modules/settingsModule/actions/settingsActions';
+import { settingsLoad } from '../redux/settingsModule/actions/settingsActions';
 import { userSettings as userSettingsRoute } from '../config/routes';
 import { AppState, Settings } from '../types';
 

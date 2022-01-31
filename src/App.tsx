@@ -13,7 +13,7 @@ import { AppState } from './types';
 import { useFetchAndState } from './hooks';
 import { useDispatch } from 'react-redux'
 import { login as loginURL } from './config/routes';
-import { userLoad } from './modules/userModule/actions/userActions';
+import { userLoad } from './redux/userModule/actions/userActions';
 
 function App(): JSX.Element {
   const userIsLogged: boolean = useSelector((state: AppState) => state.user.isLogged);

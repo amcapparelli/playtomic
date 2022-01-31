@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './modules/userModule/userReducer';
-import dashBoardReducer from './modules/dashboardModule/dashboardReducer';
-import settingsReducer from './modules/settingsModule/settingsReducer';
+import userReducer from './redux/userModule/userReducer';
+import dashBoardReducer from './redux/dashboardModule/dashboardReducer';
+import settingsReducer from './redux/settingsModule/settingsReducer';
 
 export const store = configureStore({
   reducer: {
