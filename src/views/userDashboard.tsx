@@ -5,7 +5,6 @@ import { AppState, User } from '../types';
 import { MenuItem, menuNavigation } from '../constants/menuNavigation';
 import { UserStatistics, UserSettings } from '../components';
 
-
 const UserDashboard: React.FC = (): JSX.Element => {
   const user: User = useSelector((state: AppState) => state.user);
   const menuItemActive: MenuItem = useSelector(
