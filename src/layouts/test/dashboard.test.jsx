@@ -13,8 +13,8 @@ test("Dashboard renders correctly with grettings and children components", () =>
       </Dashboard>
     </Provider>
   );
-  const userName = getByText(/hello john doe/i);
+  const userNameGreetings = getByText(/hello john doe/i);
   const children = ComponentMock;
-  expect(userName).toBeInTheDocument();
+  expect(userNameGreetings).toBeInTheDocument();
   expect(children).toBeTruthy();
 });
